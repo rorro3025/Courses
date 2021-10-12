@@ -1,12 +1,11 @@
-import { collection, getDocs } from "firebase/firestore"
-import { firestore, dbName } from "../fsconfig"
+import { collection, getDocs } from "firebase/firestore";
+import { firestore, dbName } from "../fsconfig";
 
-const dbCollection = collection(firestore, dbName)
+const dbCollection = collection(firestore, dbName);
 const getAllDocs = async () => {
-    let { docs } = getDocs(dbCollection)
-    let data = docs.map((doc) => ({ id: doc.id, ...doc.data() }))
-    return data;
-}
+  let { docs } = await getDocs(dbCollection);
+  let data = docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+  return data;
+};
 
-export { getAll }
-
+export { getAllDocs };

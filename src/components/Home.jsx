@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { firestore, dbName } from "../fsconfig";
 import { useHistory } from "react-router-dom";
 import ModalDelete from "./ModalDelete";
+import { getAllDocs } from "../model/courses";
 
 function Home() {
   const history = useHistory();
@@ -32,6 +33,12 @@ function Home() {
     getAll().then(() => {
       console.log("get done");
     });
+    console.log("--");
+    const doSomething = async () => {
+      let cosas = await getAllDocs();
+      console.log(cosas);
+    };
+    doSomething();
   }, []);
   return (
     <div className="container bg-light">
